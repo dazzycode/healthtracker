@@ -25,11 +25,11 @@ export default function Dashboard() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 py-8 px-4"
+      className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 py-8 px-3  md:px-4"
     >
       <div className="max-w-6xl mx-auto">
 
-        <h2 className="text-3xl font-bold mb-8 text-center text-blue-700">
+        <h2 className="md:text-3xl text-xl font-bold mb-8 text-center text-blue-700">
           Health Dashboard
         </h2>
 
@@ -46,7 +46,7 @@ export default function Dashboard() {
                 className="bg-gradient-to-br from-blue-500 to-blue-700 text-white rounded-xl p-5 shadow-lg text-center"
               >
                 <h3 className="font-medium text-lg">Avg Sleep</h3>
-                <p className="text-3xl font-bold mt-2">{avgSleep} hrs</p>
+                <p className="md:text-3xl text-xl font-bold mt-2">{avgSleep} hrs</p>
               </motion.div>
 
               <motion.div
@@ -54,7 +54,7 @@ export default function Dashboard() {
                 className="bg-gradient-to-br from-green-500 to-emerald-600 text-white rounded-xl p-5 shadow-lg text-center"
               >
                 <h3 className="font-medium text-lg">Avg Steps</h3>
-                <p className="text-3xl font-bold mt-2">{avgSteps}</p>
+                <p className="md:text-3xl text-xl font-bold mt-2">{avgSteps}</p>
               </motion.div>
 
               <motion.div
@@ -62,13 +62,13 @@ export default function Dashboard() {
                 className="bg-gradient-to-br from-cyan-500 to-blue-600 text-white rounded-xl p-5 shadow-lg text-center"
               >
                 <h3 className="font-medium text-lg">Avg Water</h3>
-                <p className="text-3xl font-bold mt-2">{avgWater} L</p>
+                <p className="md:text-3xl text-xlfont-bold mt-2">{avgWater} L</p>
               </motion.div>
             </div>
 
             {/* Table */}
             <div className="bg-white p-6 rounded-2xl shadow-xl mb-8 border border-gray-100 overflow-x-auto">
-              <h3 className="text-xl font-semibold mb-3 text-gray-700">
+              <h3 className="md:text-xl text-sm font-semibold mb-3 text-gray-700">
                 Recent Entries
               </h3>
 

@@ -49,7 +49,7 @@ export default function HealthForm() {
         transition={{ duration: 0.5 }}
         className="max-w-lg mx-auto bg-white shadow-2xl p-8 rounded-2xl border border-blue-100"
       >
-        <h2 className="text-3xl font-bold mb-6 text-center text-blue-700">
+        <h2 className="md:text-3xl text-xl  font-bold mb-6 text-center text-blue-700">
           Add Daily Health Data
         </h2>
 
