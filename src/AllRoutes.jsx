@@ -3,7 +3,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 import HealthForm from "./pages/HealthForm";
-import Dashboard from "./pages/Dasboard";
+import Dashboard from "./pages/Dashboard";
 
 const AllRoutes = () => {
   return (

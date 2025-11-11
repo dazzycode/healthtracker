@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from "recharts";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import { FaChevronLeft } from "react-icons/fa";
 
 export default function Dashboard() {
   const [entries, setEntries] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem("healthEntries")) || [];
@@ -13,9 +16,11 @@ export default function Dashboard() {
   const avgSleep = (
     entries.reduce((a, b) => a + Number(b.sleep), 0) / entries.length || 0
   ).toFixed(1);
+
   const avgSteps = (
     entries.reduce((a, b) => a + Number(b.steps), 0) / entries.length || 0
   ).toFixed(0);
+
   const avgWater = (
     entries.reduce((a, b) => a + Number(b.water), 0) / entries.length || 0
   ).toFixed(1);
@@ -28,6 +33,16 @@ export default function Dashboard() {
       className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 py-8 px-3  md:px-4"
     >
       <div className="max-w-6xl mx-auto">
+
+        {/* ✅ Back Button */}
+       <button
+  onClick={() => navigate("/")}
+  className="mb-6 flex items-center gap-2 px-4 py-2 bg-white border border-blue-600 text-blue-600 rounded-lg shadow hover:text-white   hover:bg-blue-700 transition"
+>
+  <FaChevronLeft className="text-sm" />
+  Back to Health Form
+</button>
+
 
         <h2 className="md:text-3xl text-xl font-bold mb-8 text-center text-blue-700">
           Health Dashboard
@@ -62,7 +77,7 @@ export default function Dashboard() {
                 className="bg-gradient-to-br from-cyan-500 to-blue-600 text-white rounded-xl p-5 shadow-lg text-center"
               >
                 <h3 className="font-medium text-lg">Avg Water</h3>
-                <p className="md:text-3xl text-xlfont-bold mt-2">{avgWater} L</p>
+                <p className="md:text-3xl text-xl font-bold mt-2">{avgWater} L</p>
               </motion.div>
             </div>
 
@@ -99,7 +114,7 @@ export default function Dashboard() {
               </table>
             </div>
 
-            {/* Chart */}
+            {/* ✅ Updated Multi-Bar Chart */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -107,7 +122,7 @@ export default function Dashboard() {
               className="bg-white p-6 rounded-2xl shadow-xl border border-gray-100"
             >
               <h3 className="text-xl font-semibold mb-3 text-gray-700">
-                Sleep Trend (Last 7 Entries)
+                Health Trends (Last 7 Entries)
               </h3>
 
               <div className="w-full h-64">
@@ -116,7 +131,10 @@ export default function Dashboard() {
                     <XAxis dataKey="date" />
                     <YAxis />
                     <Tooltip />
+                    <Legend />
                     <Bar dataKey="sleep" fill="#2563eb" radius={[5, 5, 0, 0]} />
+                    <Bar dataKey="steps" fill="#16a34a" radius={[5, 5, 0, 0]} />
+                    <Bar dataKey="water" fill="#0891b2" radius={[5, 5, 0, 0]} />
                   </BarChart>
                 </ResponsiveContainer>
               </div>
